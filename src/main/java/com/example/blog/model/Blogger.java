@@ -1,28 +1,25 @@
 package com.example.blog.model;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
-//@Builder
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class Blogger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
+    @Column(length = 128)
     private String password;
     private String name;
     @Builder.Default
     private boolean enabled=true;
     @Builder.Default
     private String role="USER";
-    public Blogger(){
 
-    }
 }

@@ -30,7 +30,7 @@ public class CommentController {
     public String createComment(Principal principal, @RequestParam String comment, @RequestParam int blogId,Model model){
         Blog blog=blogRepository.findById(blogId).get();
         Comment comment1=new Comment();
-        var user =bloggerRepository.findByEmail(principal.getName());
+        var user =bloggerRepository.findByEmail(principal.getName()).get();
         comment1.setBlogger(user);
         comment1.setComment(comment);
         comment1.setLocalDate(LocalDate.now());
